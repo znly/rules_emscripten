@@ -27,7 +27,7 @@ python external/emscripten_toolchain/emcc "${argv[@]}"
 
 # Remove the first line of .d file (emscripten resisted all my attempts to make
 # it realize it's just the absolute location of the source)
-find . -name '*.d' -exec sed -i '' '2d' {} \;
+find . -name '*.d' -exec sed -i '' "/  \//d" {} \;
 
 if [ "x$tarfile" != x ]; then
     outputs=()
