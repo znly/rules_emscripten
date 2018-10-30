@@ -16,6 +16,7 @@ filegroup(
     srcs = [
         "emar.sh",
         "emcc.sh",
+        "emenv.sh",
         "@emscripten_toolchain//:all",
         ":emscripten_cache_content",
         "@emscripten_clang//:all",

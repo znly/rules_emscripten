@@ -1,6 +1,6 @@
 load("//toolchain:defs.bzl","emcc_binary")
 
 emcc_binary(
-    name = "helloworld.html",
+    name = "helloworld",
     srcs = ["helloworld.cc"],
 )

@@ -2,6 +2,11 @@ major_version: "1"
 minor_version: "0"
 default_target_cpu: "emscripten"
 
+default_toolchain {
+    cpu: "emscripten"
+    toolchain_identifier: "emscripten-toolchain"
+}
+
 toolchain {
     toolchain_identifier: "emscripten-toolchain"
     host_system_name: "i686-unknown-linux-gnu"
@@ -60,7 +65,7 @@ toolchain {
     unfiltered_cxx_flag: "external/emscripten_toolchain/system/lib/libc/musl/arch/emscripten"
     unfiltered_cxx_flag: "-isystem"
     unfiltered_cxx_flag: "external/emscripten_toolchain/system/local/include"
-    
+
     # Turn off exceptions since emscripten has issues catching them
     compiler_flag: "-fno-exceptions"
 
@@ -81,7 +86,7 @@ toolchain {
         # Stamp the binary with a unique identifier.
     linker_flag: "-Wl,--build-id=md5"
     linker_flag: "-Wl,--hash-style=gnu"
-  
+
     cxx_flag: "-std=c++0x"
     compiler_flag: "-ffunction-sections"
     compiler_flag: "-fdata-sections"
@@ -103,7 +108,7 @@ toolchain {
     }
     compilation_mode_flags {
       mode: OPT
-  
+
       # No debug symbols.
       compiler_flag: "-g0"
       linker_flag: "-g0"
