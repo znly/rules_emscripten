@@ -20,7 +20,7 @@ filegroup(
         "@emscripten_toolchain//:all",
         ":emscripten_cache_content",
         "@emscripten_clang//:all",
-        "@nodejs//:node/bin/node",
+        "@nodejs//:bin/node",
     ],
 )
 

@@ -13,7 +13,7 @@ EM_CONFIG+="EMSCRIPTEN_ROOT='external/emscripten_toolchain';"
 EM_CONFIG+="TEMP_DIR='${EMCC_TEMP_DIR}';"
 EM_CONFIG+="SPIDERMONKEY_ENGINE='';"
 EM_CONFIG+="V8_ENGINE='';"
-EM_CONFIG+="NODE_JS='${PWD}/external/nodejs/node/bin/node';"
+EM_CONFIG+="NODE_JS='${PWD}/external/nodejs/bin/node';"
 EM_CONFIG+="COMPILER_ENGINE=NODE_JS;"
 EM_CONFIG+="JS_ENGINES=[NODE_JS];"
 export EM_CONFIG

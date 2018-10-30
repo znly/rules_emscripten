@@ -41,7 +41,7 @@ def emcc_binary(name,
 def emcc_test(name, **kwargs):
     binary_args = {}
     test_args = {}
-    data = ["@nodejs//:node/bin/node"]
+    data = ["@nodejs//:bin/node"]
     for key, val in kwargs.items():
         if key == 'tags':
             binary_args[key] = val
