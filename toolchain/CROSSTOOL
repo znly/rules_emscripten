@@ -67,7 +67,7 @@ toolchain {
     unfiltered_cxx_flag: "external/emscripten_toolchain/system/local/include"
 
     # Turn off exceptions since emscripten has issues catching them
-    compiler_flag: "-fno-exceptions"
+    # compiler_flag: "-fno-exceptions"
 
     unfiltered_cxx_flag: "-no-canonical-prefixes"
     linker_flag: "-no-canonical-prefixes"
