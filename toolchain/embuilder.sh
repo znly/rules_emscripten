@@ -26,6 +26,7 @@ cflags=(
 export EM_CACHE="${BUILD_WORKSPACE_DIRECTORY}/toolchain/emscripten_cache"
 export EMCC_CFLAGS="${cflags[@]}"
 python external/emscripten_toolchain/embuilder.py "$@"
+rm -rf "${EM_CACHE}/asmjs/ports-builds"
 
 # # Remove the first line of .d file (emscripten resisted all my attempts to make
 # # it realize it's just the absolute location of the source)
