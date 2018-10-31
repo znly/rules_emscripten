@@ -21,5 +21,7 @@ export EM_CONFIG
 export EM_EXCLUSIVE_CACHE_ACCESS=1
 export EMCC_SKIP_SANITY_CHECK=1
 export EMCC_WASM_BACKEND=0
+# Let Bazel paralellize
+export EMCC_CORES=1
 export EMMAKEN_NO_SDK=1
 export EM_CACHE="${PWD}/toolchain/emscripten_cache"
