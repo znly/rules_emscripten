@@ -78,9 +78,9 @@ toolchain {
     # Enable coloring even if there's no attached terminal. Bazel removes the
     # escape sequences if --nocolor is specified.
     compiler_flag: "-fdiagnostics-color=always"
-      # All warnings are enabled. Maybe enable -Werror as well?
+    # All warnings are enabled. Maybe enable -Werror as well?
     compiler_flag: "-Wall"
-        # Stamp the binary with a unique identifier.
+    # Stamp the binary with a unique identifier.
     linker_flag: "-Wl,--build-id=md5"
     linker_flag: "-Wl,--hash-style=gnu"
 
@@ -110,7 +110,9 @@ toolchain {
       linker_flag: "-g0"
       compiler_flag: "-Oz"
       linker_flag: "-Oz"
-      linker_flag: "--closure"
+      # linker_flag: "--closure"
+      # linker_flag: "1"
+      linker_flag: "--llvm-lto"
       linker_flag: "1"
 
       # Disable assertions
