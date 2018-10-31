@@ -66,9 +66,6 @@ toolchain {
     unfiltered_cxx_flag: "-isystem"
     unfiltered_cxx_flag: "external/emscripten_toolchain/system/local/include"
 
-    # Turn off exceptions since emscripten has issues catching them
-    # compiler_flag: "-fno-exceptions"
-
     unfiltered_cxx_flag: "-no-canonical-prefixes"
     linker_flag: "-no-canonical-prefixes"
 
@@ -87,7 +84,6 @@ toolchain {
     linker_flag: "-Wl,--build-id=md5"
     linker_flag: "-Wl,--hash-style=gnu"
 
-    cxx_flag: "-std=c++0x"
     compiler_flag: "-ffunction-sections"
     compiler_flag: "-fdata-sections"
     linker_flag: "-Wl,--gc-sections"
