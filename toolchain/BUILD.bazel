@@ -14,13 +14,13 @@ filegroup(name = "empty")
 filegroup(
     name = "all",
     srcs = [
+        ":emscripten_cache_content",
+        "@emscripten_clang//:all",
+        "@emscripten_toolchain//:all",
+        "@nodejs//:bin/node",
         "emar.sh",
         "emcc.sh",
         "emenv.sh",
-        "@emscripten_toolchain//:all",
-        ":emscripten_cache_content",
-        "@emscripten_clang//:all",
-        "@nodejs//:bin/node",
     ],
 )
 
@@ -41,4 +41,18 @@ cc_toolchain(
     static_runtime_libs = [":empty"],
     strip_files = ":empty",
     supports_param_files = 0,
+)
+
+sh_binary(
+    name = "embuilder",
+    srcs = [
+        "embuilder.sh",
+    ],
+    data = [
+        "emenv.sh",
+        ":emscripten_cache_content",
+        "@nodejs//:bin/node",
+        "@emscripten_clang//:all",
+        "@emscripten_toolchain//:all",
+    ],
 )
