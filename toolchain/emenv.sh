@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-export EMCC_TEMP_DIR="${PWD}/emtmp/"
+export EMCC_TEMP_DIR="${PWD}/emtmp"
 mkdir -p ${EMCC_TEMP_DIR}
 trap "rm -rf ${EMCC_TEMP_DIR}" EXIT
 
