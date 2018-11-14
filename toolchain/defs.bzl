@@ -1,41 +1,43 @@
 def emcc_binary(name,
                 memory_init_file = 0,
-                html = False,
                 wasm = True,
                 worker = False,
                 linkopts = [],
+                visibility = [],
                 **kwargs):
     linkopts = list(linkopts)
     outputs = [
         name + ".js",
     ]
     if wasm:
+        linkopts.append("-s WASM=1")
         outputs.append(name + ".wasm")
     else:
-        linkopts.append('-s WASM=0')
-        linkopts.append('--memory-init-file %d' % memory_init_file)
+        linkopts.append("-s WASM=0")
+        linkopts.append("--memory-init-file %d" % memory_init_file)
     if memory_init_file:
         outputs.append(name + ".mem")
     if worker:
         outputs.append(name + ".worker.js")
-        linkopts.append('--proxy-to-worker')
-    if html:
-        outputs.append(name + ".html")
+        linkopts.append("--proxy-to-worker")
 
-    tarfile = name + ".tar"
-    # we'll generate a tarfile and extract multiple outputs
+    zipfile = name + ".zip"
     native.cc_binary(
-        name = tarfile,
+        name = zipfile,
         linkopts = linkopts,
         **kwargs
     )
     native.genrule(
         name = name,
-        srcs = [tarfile],
+        srcs = [zipfile],
         outs = outputs,
         output_to_bindir = 1,
         testonly = kwargs.get('testonly'),
-        cmd = """tar xf $< -C "$(@D)"/$$(dirname "%s")""" % [outputs[0]],
+        tools = [
+            "@bazel_tools//tools/zip:zipper",
+        ],
+        cmd = """$(location @bazel_tools//tools/zip:zipper) xf $(SRCS) -d $(@D)""",
+        visibility = visibility,
     )
 
 def emcc_test(name, **kwargs):

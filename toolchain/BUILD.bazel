@@ -18,6 +18,7 @@ filegroup(
         "@emscripten_clang//:all",
         "@emscripten_toolchain//:all",
         "@nodejs//:bin/node",
+        "@bazel_tools//tools/zip:zipper",
         "emar.sh",
         "emcc.sh",
         "emenv.sh",
