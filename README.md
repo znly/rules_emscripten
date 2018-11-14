@@ -8,7 +8,7 @@ load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 git_repository(
     name = "rules_emscripten",
     remote = "https://github.com/znly/rules_emscripten",
-    commit = "b7fdbd7d3b9cabe63fed289921ece40bcc83623b",
+    commit = "<HEAD COMMIT>",
 )
 
 load("@rules_emscripten//:repositories.bzl", "rules_emscripten_repositories")
