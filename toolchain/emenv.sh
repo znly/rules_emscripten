@@ -24,12 +24,4 @@ export EMCC_WASM_BACKEND=0
 # Let Bazel paralellize
 export EMCC_CORES=1
 export EMMAKEN_NO_SDK=1
-
-em_cache_tmp="toolchain/emscripten_cache"
-external_path="external/co_znly_rules_emscripten"
-
-if [ -d "${em_cache_tmp}" ]; then
-    export EM_CACHE=${em_cache_tmp}
-elif [ -d "${external_path}/${em_cache_tmp}" ]; then
-    export EM_CACHE="${PWD}/${external_path}/${em_cache_tmp}"
-fi
+export EM_CACHE="$(dirname ${0})/emscripten_cache"
