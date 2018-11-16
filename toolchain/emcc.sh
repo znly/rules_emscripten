@@ -2,7 +2,8 @@
 
 set -euo pipefail
 
-source $(dirname $0)/emenv.sh
+toolchain_dir="$(dirname $0)"
+source ${toolchain_dir}/emenv.sh
 
 argv=("$@")
 outbase=
@@ -25,7 +26,7 @@ python external/emscripten_toolchain/emcc "${argv[@]}"
 
 # Remove the first line of .d file (emscripten resisted all my attempts to make
 # it realize it's just the absolute location of the source)
-find . -name '*.d' -exec sed -i '' "/  \//d" {} \;
+find . -name '*.d' -exec ${toolchain_dir}/sed_i.sh "/  \//d" {} \;
 
 if [ "x$zipfile" != x ]; then
     outputs=()

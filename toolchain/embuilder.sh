@@ -2,7 +2,8 @@
 
 set -euo pipefail
 
-source toolchain/emenv.sh
+toolchain_dir="$(dirname $0)"
+source ${toolchain_dir}/emenv.sh
 
 cflags=(
     "-isystem"
@@ -30,4 +31,4 @@ rm -rf "${EM_CACHE}/asmjs/ports-builds"
 
 # # Remove the first line of .d file (emscripten resisted all my attempts to make
 # # it realize it's just the absolute location of the source)
-find . -name '*.d' -exec sed -i '' '2d' {} \;
+find . -name '*.d' -exec ${toolchain_dir}/sed_i.sh '2d' {} \;
