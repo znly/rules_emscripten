@@ -1,6 +1,12 @@
 load("//toolchain:defs.bzl","emcc_binary")
 
+cc_library(
+    name = "hello-lib",
+    srcs = ["helloworld.cc"],
+    alwayslink = 1,
+)
+
 emcc_binary(
     name = "helloworld",
-    srcs = ["helloworld.cc"],
+    deps = [":hello-lib"],
 )
