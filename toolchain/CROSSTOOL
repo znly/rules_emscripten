@@ -110,8 +110,8 @@ toolchain {
       linker_flag: "-g0"
       compiler_flag: "-Oz"
       linker_flag: "-Oz"
-      # linker_flag: "--closure"
-      # linker_flag: "1"
+      linker_flag: "--closure"
+      linker_flag: "1"
       linker_flag: "--llvm-lto"
       linker_flag: "1"
 

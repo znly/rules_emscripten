@@ -1,0 +1,23 @@
+From bdc45cd0f1aa4bd84644b40c66a9fae1b97eace9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Vladim=C3=ADr=20Vondru=C5=A1?= <mosra@centrum.cz>
+Date: Thu, 22 Nov 2018 17:29:29 +0100
+Subject: [PATCH] One last fix to make Closure Compiler fully working with
+ WebGL 2.
+
+---
+ src/library_gl.js | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/library_gl.js b/src/library_gl.js
+index a3215f0b5d..0ac7d64d3d 100644
+--- a/src/library_gl.js
++++ b/src/library_gl.js
+@@ -7729,7 +7729,7 @@ var LibraryGL = {
+ #if GL_ASSERTIONS
+     GL.validateVertexAttribPointer(size, type, stride, ptr);
+ #endif
+-    GLctx.vertexAttribIPointer(index, size, type, stride, ptr);
++    GLctx['vertexAttribIPointer'](index, size, type, stride, ptr);
+   },
+ // ~USE_WEBGL2
+ #endif

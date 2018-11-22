@@ -26,6 +26,11 @@ filegroup(
     srcs = glob(["**"], exclude=["third_party/websockify/Windows/**", "site/**"]),
 )""",
         strip_prefix = "emscripten-%s" % _EMSCRIPTEN_VERSION,
+        patches = [
+            "@rules_emscripten//:third_party/emscripten_toolchain/7558.patch",
+        ],
+        patch_tool = "git",
+        patch_args = ["apply"],
     )
     http_archive_by_os(
         name = "emscripten_clang",
