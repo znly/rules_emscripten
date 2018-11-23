@@ -52,9 +52,11 @@ sh_binary(
     ],
     data = [
         "emenv.sh",
+        "sed_i.sh",
         ":emscripten_cache_content",
         "@nodejs//:bin/node",
         "@emscripten_clang//:all",
         "@emscripten_toolchain//:all",
+        "@bazel_tools//tools/bash/runfiles",
     ],
 )
