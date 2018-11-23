@@ -19,12 +19,7 @@ def rules_emscripten_repositories():
     http_archive(
         name = "emscripten_toolchain",
         url = "https://github.com/kripken/emscripten/archive/%s.tar.gz" % _EMSCRIPTEN_VERSION,
-        build_file_content = """\
-package(default_visibility = ['//visibility:public'])
-filegroup(
-    name = "all",
-    srcs = glob(["**"], exclude=["third_party/websockify/Windows/**", "site/**"]),
-)""",
+        build_file = "@rules_emscripten//:third_party/emscripten_toolchain/BUILD.bazel.in",
         strip_prefix = "emscripten-%s" % _EMSCRIPTEN_VERSION,
         patches = [
             "@rules_emscripten//:third_party/emscripten_toolchain/7558.patch",
