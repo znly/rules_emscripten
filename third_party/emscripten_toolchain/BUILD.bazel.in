@@ -1,12 +1,22 @@
 package(default_visibility = ['//visibility:public'])
 
 filegroup(
-    name = "all",
+    name = "toolchain",
     srcs = glob(
-        include = ["**"],
-        exclude = [
-            "third_party/websockify/Windows/**",
-            "site/**",
+        include = [
+            "*",
+            "system/include/**",
+            "system/local/include/**",
+            "tools/**",
+        ],
+    ),
+)
+
+filegroup(
+    name = "srcs",
+    srcs = glob(
+        include = [
+            "src/**",
         ],
     ),
 )

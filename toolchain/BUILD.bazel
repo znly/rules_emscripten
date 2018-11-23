@@ -16,7 +16,7 @@ filegroup(
     srcs = [
         ":emscripten_cache_content",
         "@emscripten_clang//:all",
-        "@emscripten_toolchain//:all",
+        "@emscripten_toolchain//:toolchain",
         "@nodejs//:bin/node",
         "@bazel_tools//tools/zip:zipper",
         "emar.sh",
@@ -56,7 +56,8 @@ sh_binary(
         ":emscripten_cache_content",
         "@nodejs//:bin/node",
         "@emscripten_clang//:all",
-        "@emscripten_toolchain//:all",
+        "@emscripten_toolchain//:toolchain",
+        "@emscripten_toolchain//:srcs",
         "@bazel_tools//tools/bash/runfiles",
     ],
 )
