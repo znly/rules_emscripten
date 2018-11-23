@@ -1,0 +1,68 @@
+From e014df6927bb9da6a2c5fceb0b78f17a88da69a5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Vladim=C3=ADr=20Vondru=C5=A1?= <mosra@centrum.cz>
+Date: Fri, 23 Nov 2018 09:11:38 +0100
+Subject: [PATCH 1/2] openal: fix Closure Compiler error.
+
+Reported as:
+
+    ERROR - variable ext is undeclared
+      for (ext in AL.AL_EXTENSIONS) {
+           ^^^
+---
+ src/library_openal.js | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/library_openal.js b/src/library_openal.js
+index 438f6533c2..f0c7e50888 100644
+--- a/src/library_openal.js
++++ b/src/library_openal.js
+@@ -3103,7 +3103,7 @@ var LibraryOpenAL = {
+       break;
+     case 0xB004 /* AL_EXTENSIONS */:
+       ret = '';
+-      for (ext in AL.AL_EXTENSIONS) {
++      for (var ext in AL.AL_EXTENSIONS) {
+         ret = ret.concat(ext);
+         ret = ret.concat(' ');
+       }
+
+From 68a617fbf2d42bf3e52717f7075ede9f87c37226 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Vladim=C3=ADr=20Vondru=C5=A1?= <mosra@centrum.cz>
+Date: Fri, 23 Nov 2018 09:13:21 +0100
+Subject: [PATCH 2/2] openal: fix suspicious negation.
+
+Reported by Closure Compiler:
+
+    WARNING - Suspicious negated left operand of in operator.
+     if (!deviceId in AL.deviceRefCounts || AL.deviceRefCounts[deviceId] > 0) {
+         ^^^^^^^^^
+
+    WARNING - Suspicious negated left operand of in operator.
+     if (!deviceId in AL.deviceRefCounts) {
+         ^^^^^^^^^
+---
+ src/library_openal.js | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/library_openal.js b/src/library_openal.js
+index f0c7e50888..880c53b54c 100644
+--- a/src/library_openal.js
++++ b/src/library_openal.js
+@@ -2069,7 +2069,7 @@ var LibraryOpenAL = {
+   alcCloseDevice__proxy: 'sync',
+   alcCloseDevice__sig: 'ii',
+   alcCloseDevice: function(deviceId) {
+-    if (!deviceId in AL.deviceRefCounts || AL.deviceRefCounts[deviceId] > 0) {
++    if (!(deviceId in AL.deviceRefCounts) || AL.deviceRefCounts[deviceId] > 0) {
+       return 0 /* ALC_FALSE */;
+     }
+
+@@ -2081,7 +2081,7 @@ var LibraryOpenAL = {
+   alcCreateContext__proxy: 'sync',
+   alcCreateContext__sig: 'iii',
+   alcCreateContext: function(deviceId, pAttrList) {
+-    if (!deviceId in AL.deviceRefCounts) {
++    if (!(deviceId in AL.deviceRefCounts)) {
+ #if OPENAL_DEBUG
+       console.log('alcCreateContext() called with an invalid device');
+ #endif

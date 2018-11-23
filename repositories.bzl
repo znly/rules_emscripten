@@ -28,6 +28,7 @@ filegroup(
         strip_prefix = "emscripten-%s" % _EMSCRIPTEN_VERSION,
         patches = [
             "@rules_emscripten//:third_party/emscripten_toolchain/7558.patch",
+            "@rules_emscripten//:third_party/emscripten_toolchain/7563.patch",
         ],
         patch_tool = "git",
         patch_args = ["apply"],
