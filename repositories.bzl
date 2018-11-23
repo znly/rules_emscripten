@@ -1,7 +1,7 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@rules_emscripten//:http_archive_by_os.bzl", "http_archive_by_os")
 
-_EMSCRIPTEN_VERSION = "1.38.15"
+_EMSCRIPTEN_VERSION = "1.38.20"
 
 _ALL_FILES_CONTENT = """\
 package(default_visibility = ['//visibility:public'])
@@ -45,8 +45,8 @@ filegroup(
             "linux": "emscripten-llvm-e%s" % _EMSCRIPTEN_VERSION,
         },
         sha256 = {
-            "darwin": "6c65a184e06abd23e3bb7254ba9264bfd4e5957b14f32b219d3efa095c83d479",
-            "linux": "451c1d7d38e59398a4aada8b8c490ba5773df384e31849809442a8ec0e9d1ee4",
+            "darwin": "524de09338a476c4621a8a454d3b5399d5aecc99304a52f638e1f84d585935e3",
+            "linux": "c3704866391bf2417bd7e0fd246713f6f322ea19ff741ef00a301cea7e604114",
         },
     )
     _maybe(http_archive,
