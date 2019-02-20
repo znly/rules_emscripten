@@ -1,11 +1,5 @@
 major_version: "1"
 minor_version: "0"
-default_target_cpu: "emscripten"
-
-default_toolchain {
-    cpu: "emscripten"
-    toolchain_identifier: "emscripten-toolchain"
-}
 
 toolchain {
     toolchain_identifier: "emscripten-toolchain"

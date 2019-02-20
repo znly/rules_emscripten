@@ -5,7 +5,8 @@ exports_files(["test.sh"])
 cc_toolchain_suite(
     name = "emscripten",
     toolchains = {
-        "emscripten|emscripten": "emscripten_toolchain",
+        "emscripten|emscripten": ":emscripten_toolchain",
+        "emscripten": ":emscripten_toolchain",
     },
 )
 
