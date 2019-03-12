@@ -1,1 +1,4 @@
-try-import tools/bazel.rc
+build:emscripten   --crosstool_top=//toolchain:emscripten
+build:emscripten   --cpu=emscripten
+build:emscripten   --compiler=emscripten
+build:emscripten   --host_crosstool_top=@bazel_tools//tools/cpp:toolchain
