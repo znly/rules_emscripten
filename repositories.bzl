@@ -46,6 +46,6 @@ def rules_emscripten_repositories():
     )
     _maybe(http_archive,
         name = "build_bazel_rules_nodejs",
-        url = "https://github.com/bazelbuild/rules_nodejs/archive/0.15.3.tar.gz",
-        strip_prefix = "rules_nodejs-0.15.3",
+        url = "https://github.com/bazelbuild/rules_nodejs/archive/0.27.4.tar.gz",
+        strip_prefix = "rules_nodejs-0.27.4",
     )
